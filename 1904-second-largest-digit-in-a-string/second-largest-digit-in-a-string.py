@@ -1,15 +1,12 @@
 class Solution:
     def secondHighest(self, s: str) -> int:
-        largest = -1
-        sec_lar = -1
+        digits = []
 
-        for ch in s:
-            if ch.isdigit():
-                d = int(ch)
-                if d>largest:
-                    sec_lar = largest
-                    largest = d
-                elif largest>d>sec_lar:
-                    sec_lar = d
+        for i in s:
+            if i.isdigit():
+                digits.append(int(i))
 
-        return sec_lar
+        digit_sorted = sorted(set(digits))
+        if len(digit_sorted) < 2:
+            return -1
+        return digit_sorted[-2]
